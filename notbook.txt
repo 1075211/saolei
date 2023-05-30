@@ -1,0 +1,271 @@
+nextDouble() 随机生成一个【0，1.0）之间的小数
+nextInt（）随机生成 【-2^31-2^31-1】
+nextInt（n）随机生成[0,n)
+
+String a= “123”;
+int b = Integer.parseInt(a);
+这样b就等于123了。
+
+2.ValueOf()方法比如说 Integer.valueOf() 是把String类型转化为Integer类型(注意：是Integer类型，而不是int类型，int类型是表示数字的简单类型，Integer类型是一个引用的复杂类型)
+如：
+String a= “123”;
+Integer c =Integer.valueOf(a);
+int b =c.intValue();
+
+把Integer转化为String类型：
+Integer a = new Integer(123);
+String b =a.toString();
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+public class Test{
+    public static void main (String[]args){
+		Date date=new Date();
+        SimpleDateFormat df4=new SimpleDateFormat("y-M-d");
+        SimpleDateFormat df5=new SimpleDateFormat("y-M-d H:m:s ");
+        SimpleDateFormat df6=new SimpleDateFormat("H:m:s");
+        DateFormat df7 = DateFormat.getDateTimeInstance(DateFormat.FULL,DateFormat.FULL);
+        DateFormat df8 = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG);
+        DateFormat df9 = DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT); 
+        System.out.println(df4.format(date));
+        System.out.println(df5.format(date));
+        System.out.println(df6.format(date));
+        System.out.println(df7.format(date));
+        System.out.println(df8.format(date));
+        System.out.println(df9.format(date));
+    }
+}
+G　　"公元"
+y　　四位数年份
+M　　月
+d　　日
+h　　时 在上午或下午 (1~12)
+H　　时 在一天中 (0~23)
+m　　分
+S　　毫秒
+E　　一周中的周几
+D　　一年中的第几天
+w　　一年中第几个星期
+a　　上午 / 下午 标记符
+k 　　时(1~24)
+K 　   时 在上午或下午 (0~11)
+类中的变量不用初始化
+方法中的局部变量必须初始化
+package byd001;
+import javax.swing.*;
+import java.awt.*;
+public class Login {
+	public static void main(String[] args) {
+		JFrame login=new JFrame();   //创建一个普通的窗口对象
+		login.setTitle("登录界面");     //设置窗口的标题为“登录界面”
+		login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //用户单击窗口的关闭按钮时程序执行的操作
+		login.setExtendedState(JFrame.MAXIMIZED_BOTH);   //用户单击窗口的最大化按钮时程序执行的操作
+		login.setSize(400,200);  //设置窗口的大小
+		login.setLocationRelativeTo(null);  //设置窗口的位置为中央位置
+		login.setResizable(false);   //设置窗口大小不能调整
+		Container con=login.getContentPane();  //生成一个容器	
+		con.setLayout(new GridLayout(4,1));   //将容器布局设置为网格式布局，网格的行数和列数分别是4和1
+		JPanel pan1=new JPanel(); //生成第一个面板
+		JLabel title=new JLabel("欢迎登录");
+		title.setFont(new Font("宋体",Font.BOLD, 20));  //设置字体为宋体，风格为粗体，字号为20
+		pan1.add(title);  //将字体加入面板
+		con.add(pan1);  //将JPanel面板加入容器
+		//用户名及其文本框放置在第二个面板上
+		JPanel pan2=new JPanel();//生成第二个面板
+		JLabel name=new JLabel("用户名：");
+		pan2.add(name);
+		TextField tf_name=new TextField(20);   //设置文本的宽度为20
+		tf_name.setText("请在此处输入用户名");
+		pan2.add(tf_name);
+		con.add(pan2);
+		//密码及其密码域放在第三个版面上
+		JPanel pan3=new JPanel();//生成第三个的面板
+		JLabel pass = new JLabel("     密码：");
+		pan3.add(pass);
+		JPasswordField password=new JPasswordField(15);  //设置密文框长度为15
+		password.setEchoChar('*');   //设置密文框回显字符为'*'
+		pan3.add(password);
+		con.add(pan3);
+		//将登陆和退出这两个按钮放在第四个版面上
+		JPanel pan4 = new JPanel();
+		JButton b_log=new JButton("登录");
+pan4.add(b_log);
+		JButton b_exit=new JButton("退出");
+		pan4.add(b_exit); 
+		con.add(pan4);
+		login.setVisible(true);  //将界面设置为显示
+	}
+
+package com.tcz.exersise5;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Exercise9_1 extends JFrame{
+	public static void main(String[] args) {
+		Exercise9_1 e=new Exercise9_1();
+	}
+	
+	public Exercise9_1(){
+		setTitle("My Frame");   //窗体名
+		setSize(600,300);		//窗体大小
+		Container c=getContentPane();
+		c.setLayout(new GridLayout(2, 1));
+		setLocation(800,500);   //设置窗体位置
+		
+		//顶部面板
+		JPanel top=new JPanel();
+		JPanel bot=new JPanel();
+		JLabel l1=new JLabel("Sorce");
+		l1.setFont(new Font("Times new roman", Font.BOLD, 18));  //设置字体样式
+		JLabel l2=new JLabel("Target");
+		l2.setFont(new Font("Times new roman", Font.BOLD, 18));
+		JTextField t1=new JTextField(20);
+		JTextField t2=new JTextField(20);	
+		top.add(l1);
+		top.add(t1);
+		top.add(l2);
+		top.add(t2);
+		top.setLayout(new FlowLayout(FlowLayout.CENTER));
+		c.add(top);
+		
+		//添加按钮
+		JButton jb1=new JButton("Clear");
+		JButton jb2=new JButton("Copy");
+		JButton jb3=new JButton("Close");
+		bot.add(jb1);
+		bot.add(jb2);
+		bot.add(jb3);
+		c.add(bot);
+		
+		//添加事件监听
+		jb1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				t1.setText("");
+				t2.setText("");
+			}
+		});
+		jb2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String str=t1.getText();
+				t2.setText(str);				
+			}
+		});
+		jb3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);		
+			}
+		});
+		
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);		
+	}
+
+}
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
+import java.awt.*;
+public class UserLoginApp {
+    public static void main(String[] args) throws IOException {
+            JPanel jp1=new JPanel();
+            JPanel jp2=new JPanel();
+            JPanel jp3=new JPanel();
+            JPanel jp4=new JPanel();
+            JPanel jp5=new JPanel();
+            JFrame frame =new JFrame ("用户登陆");
+            Container co=frame.getContentPane();
+            frame.setSize(200, 160);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            JTextField a1=new JTextField(10);
+            JTextField a2=new JTextField(10);
+            JComboBox cb = new JComboBox();
+            cb.addItem("学生用户");
+            cb.addItem("教师用户");
+            JButton btn1=new JButton ("确定");
+            JButton btn2=new JButton("取消");
+            JButton btn3=new JButton ("退出");
+            JLabel c1=new JLabel("用户类型");
+            JLabel c2=new JLabel("用户名：");
+            JLabel c3=new JLabel("密码：");
+            jp1.add(c1);
+            jp1.add(cb);
+            jp2.add(c2);
+            jp2.add(a1);
+            jp3.add(c3);
+            jp3.add(a2);
+            jp4.add(btn1);
+            jp4.add(btn2);
+            jp4.add(btn3);
+            jp5.add(jp1);
+            jp5.add(jp2);
+            jp5.add(jp3);
+            jp5.add(jp4);
+            co.add(jp5);
+            File fe=new File("user.txt");
+            FileReader re=new FileReader(fe);
+		    StringBuilder result = new StringBuilder();
+            BufferedReader br = new BufferedReader(re);
+            String s = null;
+            while ((s = br.readLine()) != null) {
+                result.append(s);
+                result.append(" ");
+            }
+            br.close();
+		    String st=result.toString();
+            final String[]str=st.split(" ");
+            btn1.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    int index = cb.getSelectedIndex();
+                    if(a1.getText()==null){
+                        JOptionPane.showMessageDialog(frame,"用户名不可为空");
+                    }
+                    else if(a2.getText()==null){
+                        JOptionPane.showMessageDialog(frame,"密码不可为空");
+                    }
+                    else if(index==0){
+                        if(a1.getText().equals("stu")&&a2.getText().equals("stu")){
+                            JOptionPane.showMessageDialog(frame,"学生用户登陆成功");
+                            
+                        }else
+                        if(str.length!=0&&a1.getText().equals(str[0])&&a2.getText().equals(str[1])){
+                            JOptionPane.showMessageDialog(frame,"学生用户登陆成功");
+                        }else
+                        if(str.length!=0&&a1.getText().equals(str[3])&&a2.getText().equals(str[4])){
+                            JOptionPane.showMessageDialog(frame,"学生用户登陆成功");
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(frame,"用户名不存在或者密码不正确!" );
+                        }
+                    }
+                    else if(index==1){
+                        if(a1.getText().equals("tea")&&a2.getText().equals("tea")){
+                            JOptionPane.showMessageDialog(frame,"教师用户登陆成功");
+                        }else
+                        if(str.length!=0&&a1.getText().equals(str[6])&&a2.getText().equals(str[7])){
+                            JOptionPane.showMessageDialog(frame,"教师用户登陆成功");          
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(frame,"用户名不存在或者密码不正确!" );
+                        }
+                    }
+                }
+            });
+            btn2.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    a1.setText("");
+                    a2.setText("");
+                }
+            });
+            btn3.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                   System.exit(0);
+               }
+            });
+            frame.validate();
+    }
+}
